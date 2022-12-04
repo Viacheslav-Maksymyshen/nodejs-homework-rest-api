@@ -1,6 +1,7 @@
 const fs = require("fs/promises");
 const path = require("path");
 const { nanoid } = require("nanoid");
+
 const contactsPath = path.resolve("models/contacts.json");
 
 async function listContacts() {
@@ -45,8 +46,8 @@ async function addContact(name, email, phone) {
     const contacts = await listContacts();
     const newContact = {
       id: nanoid(),
-      name,
       email,
+      name,
       phone,
     };
     contacts.push(newContact);
