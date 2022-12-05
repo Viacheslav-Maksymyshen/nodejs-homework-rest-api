@@ -41,16 +41,14 @@ async function removeContactById(contactId) {
   }
 }
 
-async function updateContactById(contactId, data) {
+async function updateContactById(id, data) {
   try {
     const contacts = await listContacts();
-    const index = contacts.findIndex(
-      (item) => item.id === contactId.toString()
-    );
+    const index = contacts.findIndex((item) => item.id === id.toString());
     if (index === -1) {
       return null;
     }
-    contacts[index] = { contactId, ...data };
+    contacts[index] = { id, ...data };
     await fs.writeFile(contactsPath, JSON.stringify(contacts, null, 2));
     return contacts[index];
   } catch (error) {
