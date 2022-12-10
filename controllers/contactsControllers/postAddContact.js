@@ -1,6 +1,6 @@
 const contacts = require("../../models/contacts");
 const { HttpError } = require("../../helpers");
-const { addSchema } = require("../../schemas/addSchema");
+const { addSchema } = require("../../schemas");
 
 const postAddContact = async (req, res, next) => {
   try {
