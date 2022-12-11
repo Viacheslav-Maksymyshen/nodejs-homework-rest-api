@@ -1,4 +1,4 @@
-const contacts = require("../../models/contacts");
+const Contact = require("../../models/contact");
 const { HttpError } = require("../../helpers");
 const { addSchema } = require("../../schemas");
 
@@ -9,7 +9,7 @@ const putUpdateContact = async (req, res, next) => {
       throw HttpError(400, "missing fields");
     }
     const { contactId } = req.params;
-    const result = await contacts.updateContactById(contactId, req.body);
+    const result = await Contact.updateContactById(contactId, req.body);
     if (!result) {
       throw HttpError(404, "Not found");
     }

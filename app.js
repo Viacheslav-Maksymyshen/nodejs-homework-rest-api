@@ -3,12 +3,6 @@ const logger = require("morgan");
 const cors = require("cors");
 
 require("dotenv").config();
-const mongoose = require("mongoose");
-const { DB_HOST } = process.env;
-mongoose
-  .connect(DB_HOST)
-  .then(() => console.log("Success connect to db"))
-  .catch((error) => console.log(error.message));
 
 const contactsRouter = require("./routes/api/contacts");
 

@@ -1,4 +1,4 @@
-const contacts = require("../../models/contacts");
+const Contact = require("../../models/contact");
 const { HttpError } = require("../../helpers");
 
 const deleteContact = async (req, res, next) => {
