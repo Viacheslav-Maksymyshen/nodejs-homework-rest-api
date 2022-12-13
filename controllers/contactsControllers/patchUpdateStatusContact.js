@@ -4,11 +4,13 @@ const { HttpError } = require("../../helpers");
 const patchUpdateStatusContact = async (req, res, next) => {
   try {
     const { favorite } = req.body;
-    if (favorite) {
-      throw HttpError(400, "missing fields");
-    }
     const { contactId } = req.params;
-    const result = await Contact.findByIdAndUpdate(contactId, { favorite });
+
+    const result = await Contact.findByIdAndUpdate(
+      contactId,
+      { favorite },
+      { new: true }
+    );
     if (!result) {
       throw HttpError(404, "Not found");
     }
