@@ -4,7 +4,7 @@ const { HttpError } = require("../../helpers");
 const getContacts = async (req, res, next) => {
   try {
     const { contactId } = req.params;
-    const result = await Contact.getContactById(contactId);
+    const result = await Contact.findById(contactId);
     if (!result) {
       throw HttpError(404, "Not found");
     }

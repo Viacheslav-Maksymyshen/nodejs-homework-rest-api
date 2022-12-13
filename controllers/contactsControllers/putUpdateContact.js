@@ -8,7 +8,7 @@ const putUpdateContact = async (req, res, next) => {
       throw HttpError(400, "missing fields");
     }
     const { contactId } = req.params;
-    const result = await Contact.updateContactById(contactId, req.body);
+    const result = await Contact.findByIdAndUpdate(contactId, req.body);
     if (!result) {
       throw HttpError(404, "Not found");
     }
