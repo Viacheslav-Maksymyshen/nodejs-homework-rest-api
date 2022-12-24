@@ -1,10 +1,16 @@
 const { Contact } = require("../../models/contact");
 const { HttpError } = require("../../helpers");
 
-const getContacts = async (req, res, next) => {
+const patchUpdateStatusContact = async (req, res, next) => {
   try {
+    const { favorite } = req.body;
     const { contactId } = req.params;
-    const result = await Contact.findById(contactId);
+
+    const result = await Contact.findByIdAndUpdate(
+      contactId,
+      { favorite },
+      { new: true }
+    );
     if (!result) {
       throw HttpError(404, "Not found");
     }
@@ -15,4 +21,4 @@ const getContacts = async (req, res, next) => {
   }
 };
 
-module.exports = getContacts;
+module.exports = patchUpdateStatusContact;
