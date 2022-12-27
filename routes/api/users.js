@@ -9,7 +9,7 @@ const { schemasUsers } = require("../../models");
 router.post(
   "/register",
   validateBody(schemasUsers.joiRegisterSchema),
-  ctrl.register
+  wrapper(ctrl.register)
 );
 
 router.post(
