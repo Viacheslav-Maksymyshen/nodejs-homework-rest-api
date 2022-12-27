@@ -22,6 +22,6 @@ router.get("/current", authenticate, wrapper(ctrl.current));
 
 router.post("/logout", authenticate, wrapper(ctrl.logout));
 
-router.post("/update", authenticate, wrapper(ctrl.updateSubscription));
+router.patch("/update", authenticate, wrapper(ctrl.updateSubscription));
 
 module.exports = router;
