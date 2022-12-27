@@ -33,7 +33,6 @@ const joiRegisterSchema = Joi.object({
       tlds: { allow: ["com", "net", "ua"] },
     })
     .required(),
-  subscription: Joi.string().required(),
 });
 
 const joiLoginSchema = Joi.object({

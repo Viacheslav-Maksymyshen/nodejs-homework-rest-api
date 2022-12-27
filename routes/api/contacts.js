@@ -2,6 +2,7 @@ const express = require("express");
 
 const ctrl = require("../../controllers/contactsControllers");
 const { validateBody, authenticate } = require("../../middlewares");
+
 const { schemasContact } = require("../../models");
 
 const router = express.Router();
