@@ -31,8 +31,8 @@ userSchema.post("save", handleMongooseError);
 // Joi
 
 const joiRegisterSchema = Joi.object({
-  password: Joi.string().alphanum().min(6).required(),
-  email: Joi.string()
+  password: string().alphanum().min(6).required(),
+  email: string()
     .email({
       minDomainSegments: 2,
       tlds: { allow: ["com", "net", "ua"] },
@@ -41,8 +41,8 @@ const joiRegisterSchema = Joi.object({
 });
 
 const joiLoginSchema = Joi.object({
-  password: Joi.string().alphanum().min(6).required(),
-  email: Joi.string()
+  password: string().alphanum().min(6).required(),
+  email: string()
     .email({
       minDomainSegments: 2,
       tlds: { allow: ["com", "net", "ua"] },
