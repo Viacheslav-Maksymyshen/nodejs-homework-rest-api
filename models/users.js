@@ -1,7 +1,6 @@
 const { Schema, model } = require("mongoose");
 const { handleMongooseError } = require("../helpers");
 const Joi = require("joi");
-const { string } = require("joi");
 
 const userSchema = new Schema({
   password: {
@@ -31,8 +30,8 @@ userSchema.post("save", handleMongooseError);
 // Joi
 
 const joiRegisterSchema = Joi.object({
-  password: string().alphanum().min(6).required(),
-  email: string()
+  password: Joi.string().alphanum().min(6).required(),
+  email: Joi.string()
     .email({
       minDomainSegments: 2,
       tlds: { allow: ["com", "net", "ua"] },
@@ -41,8 +40,8 @@ const joiRegisterSchema = Joi.object({
 });
 
 const joiLoginSchema = Joi.object({
-  password: string().alphanum().min(6).required(),
-  email: string()
+  password: Joi.string().alphanum().min(6).required(),
+  email: Joi.string()
     .email({
       minDomainSegments: 2,
       tlds: { allow: ["com", "net", "ua"] },
