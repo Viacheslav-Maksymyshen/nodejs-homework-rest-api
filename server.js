@@ -8,12 +8,13 @@ mongoose.set("strictQuery", true);
 
 mongoose
   .connect(DB_HOST)
-  .then(() =>
+  .then(() => {
+    console.log("database connection successful");
     app.listen(PORT, () => {
-      console.log("Database connection successful");
-    })
-  )
+      console.log(`Server running. Use our API on port: ${PORT}`);
+    });
+  })
   .catch((error) => {
-    console.log(error.message);
+    console.log(`Server is not running. Error message: ${error.message}`);
     process.exit(1);
   });

@@ -22,9 +22,9 @@ describe("tests for login/register controllers", () => {
   );
 
   test("login returns response status 200 and response body must contain a token ", async () => {
-    const response = await request(app).post("/api/auth/login").send({
-      email: "slava@gmail.com",
-      password: "12345678",
+    const response = await request(app).post("/api/users/login").send({
+      email: "slavamax.it@gmail.com",
+      password: "123456",
     });
 
     expect(response.status).toBe(200);
@@ -32,13 +32,14 @@ describe("tests for login/register controllers", () => {
   });
 
   test("register returns response status 201 and response body must contain  email and subscription type", async () => {
-    const response = await request(app).post("/api/auth/register").send({
-      email: "slava.max@gmail.com",
-      password: "12345678",
+    const response = await request(app).post("/api/users/register").send({
+      email: "slavamax@gmail.com",
+      password: "123456",
     });
-    const { email, subscription } = response.body;
+    const { user } = response.body;
     expect(response.status).toBe(201);
-    expect(typeof email).toBe("string");
-    expect(typeof subscription).toBe("string");
+    expect(typeof user === "object").toBe(true);
+    expect(typeof user.email).toBe("string");
+    expect(typeof user.subscription).toBe("string");
   });
 });
